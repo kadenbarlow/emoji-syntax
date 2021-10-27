@@ -1,0 +1,24 @@
+{
+  "name": "emoji-syntax",
+  "description": "Convert :emoji: syntax in Chrome",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["js/content.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "web_accessible_resources": [
+    { "resources": ["json/emojis.json"], "matches": ["http://*/*", "https://*/*"] }
+  ]
+}

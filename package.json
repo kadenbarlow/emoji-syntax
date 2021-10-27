@@ -1,0 +1,33 @@
+{
+  "name": "emoji-syntax",
+  "version": "0.1.0",
+  "description": "Chrome extension to convert slack like :emoji: syntax",
+  "main": "src/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^2.6.1"
+  },
+  "scripts": {
+    "start": "nodemon --exec yarn build",
+    "prebuild": "rimraf dist",
+    "build": "cp -R src dist && cp manifest.json dist/ && babel src -d dist"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "dist/",
+      "node_modules"
+    ],
+    "execMap": {
+      "js": "node"
+    },
+    "ext": "js html css",
+    "verbose": true
+  },
+  "dependencies": {
+    "nodemon": "^1.14.12"
+  }
+}
